@@ -1,0 +1,43 @@
+{{ define "title" }}
+  {{ .Title }} | {{ if isset .Site.Params "seotitle" }}{{ .Site.Params.seotitle }}{{ else }}{{ .Site.Title }}{{ end }}
+{{ end }}
+
+{{ define "main" }}
+  {{ partial "header.html" . }}
+  <!--
+  <section class="main links-list">
+    <header class="list-header offscreen">
+      <h2 class="list-label">{{ .Title }}</h2>
+    </header>
+    {{ range $.Site.Data.links }}
+      <a class="link-item" href="{{ .link }}">
+        <img class="link-avatar" src="{{ .avatar }}" alt="{{ .title }}">
+        <h3 class="link-title">{{ .title }}</h3>
+        <p class="link-description">{{ .description }}</p>
+      </a>
+    {{ end }}
+  </section>
+
+  {{ printf "%#v" $.Site.Taxonomies.categories }}
+  -->
+
+
+
+
+
+  {{ if gt (len ($.Site.Taxonomies.categories)) 0 }}
+
+  <h2> By Category</h2>
+
+  {{ range $category, $pages := $.Site.Taxonomies.categories }}
+  <h3>{{ $category }} ({{ $pages.Count }})</h3>
+    <ul>
+      {{ range $pages }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
+
+    {{ end }}
+  {{ partial "footer.html" . }}
+{{ end }}
