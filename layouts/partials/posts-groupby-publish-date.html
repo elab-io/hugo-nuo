@@ -1,0 +1,20 @@
+<!--
+Group posts by publish date
+Reference: 
+https://gohugo.io/templates/lists/
+https://gohugo.io/functions/getpage/ 
+-->
+
+<h2>Posts by Date</h2>
+{{ range (.Site.GetPage "section" "post").Pages.GroupByPublishDate "Jan 2006" }}
+
+<h3>{{ .Key }} ({{ len .Pages }})</h3>
+
+<ul>
+    {{ range .Pages }}
+    <li>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

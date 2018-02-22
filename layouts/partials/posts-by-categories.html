@@ -1,0 +1,15 @@
+{{ if gt (len ($.Site.Taxonomies.categories)) 0 }}
+
+<h2> By Category</h2>
+
+  {{ range $category, $pages := $.Site.Taxonomies.categories }}
+  <h3>{{ $category }} ({{ $pages.Count }})</h3>
+  <ul>
+    {{ range $pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+
+{{ end }}
+
