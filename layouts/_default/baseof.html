@@ -31,6 +31,17 @@
       {{ end }}
     </div>
     {{ end }}
-    {{ block "main" . }}{{ end }}
-  </body>
+ 
+    {{ if and (isset .Site.Params "algolia_search") (eq .Site.Params.algolia_search true) }}
+
+    
+    {{ partial "algolia-search" . }}
+    
+    
+    {{ end }}   
+   
+   {{ block "main" . }}{{ end }}
+    
+ 
+   </body>
 </html>
