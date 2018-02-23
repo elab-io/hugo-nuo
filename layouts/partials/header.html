@@ -11,15 +11,14 @@
   </button>
 
   
-      {{ if and (isset .Site.Params "algolia_search") (eq .Site.Params.algolia_search true) }}
-
-    
-    {{ partial "algolia-search" . }}
-    
-    
-    {{ end }}   
-
   
+  {{ if and (isset .Site.Params "algolia_search") (eq .Site.Params.algolia_search true) }}
+
+
+{{ partial "algolia-search" . }}
+
+
+{{ end }}   
   
   <nav class="site-menu collapsed">
     <h2 class="offscreen">Main Menu</h2>
